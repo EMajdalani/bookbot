@@ -6,6 +6,7 @@ def get_book_text(path_to_file):
 
 from stats import word_counter
 from stats import letter_counter
+from stats import list_creator
 
 #orchestrator function
 def main():
@@ -13,8 +14,18 @@ def main():
     text = get_book_text(path_to_file)
     num_words = word_counter(text)
     letter_count = letter_counter(text)
-    print(f"{num_words} words found in the document")
-    print(letter_count)
+    sorted_list = list_creator(letter_count)
+    
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+    print("--------- Character Count -------")
+    
+    for i in sorted_list:
+        print (f"{i["char"]}: {i["count"]}")
+    
+    print("============= END ===============")
     
 main()
     
