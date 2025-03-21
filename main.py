@@ -1,3 +1,11 @@
+import sys
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit (1)
+
+path_to_file = sys.argv[1]
+
 #Reads the entire contents of the book and returns it as a string
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
@@ -10,14 +18,13 @@ from stats import list_creator
 
 #orchestrator function
 def main():
-    path_to_file = "books/frankenstein.txt"
     text = get_book_text(path_to_file)
     num_words = word_counter(text)
     letter_count = letter_counter(text)
     sorted_list = list_creator(letter_count)
     
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {path_to_file}")
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
